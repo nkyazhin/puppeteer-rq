@@ -1,4 +1,4 @@
-yaspeller
+puppeteer-rq
 =========
 [![NPM version](https://img.shields.io/npm/v/puppeteer-rq.svg)](https://www.npmjs.com/package/puppeteer-rq)
 [![NPM Downloads](https://img.shields.io/npm/dm/puppeteer-rq.svg?style=flat)](https://www.npmjs.org/package/puppeteer-rq)
