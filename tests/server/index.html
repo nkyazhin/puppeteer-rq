@@ -61,6 +61,10 @@
               responseHeaders.innerText = res.headers.get('Content-Type');
               responseHeaders.hidden = false;
             })
+          .catch(error => {
+            responseBody.innerText = 'error';
+            responseBody.hidden = false;
+          })
     })
 </script>
 </body>

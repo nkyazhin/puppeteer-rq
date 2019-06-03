@@ -105,6 +105,21 @@ describe('mocker', () => {
     expect(responseText).toEqual('{"title":"mock_response"}');
   });
 
+  it('aborted response', async () => {
+    await page.goto('http://localhost:3000');
+    await mocker.start({
+      namespace: 'tests/__remocks__',
+      page,
+      mockList: {
+      },
+      ci: true
+    });
+    await page.click('#button');
+    await page.waitForSelector('.response-body');
+    await mocker.stop();
+    const responseText = await getText(page, '.response-body');
+    expect(responseText).toEqual('error');
+  });
 
   async function getText(page, selector) {
     return await page.evaluate(

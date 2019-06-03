@@ -48,7 +48,10 @@ const options = {
         }
       }
     } 
-  }
+  },
+  // default: false
+  // interruption of requests that are not in mockList and request.resourceType() == 'xhr' or 'fetch'
+  ci: true
 }
 ```
 

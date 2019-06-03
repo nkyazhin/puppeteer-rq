@@ -4,7 +4,6 @@ const path = require('path');
 const app = express();
 
 app.get('/api', (req, res) => {
-  res.set('Content-Type', 'application/json');
   res.json({title: 'response'})
 });
 
