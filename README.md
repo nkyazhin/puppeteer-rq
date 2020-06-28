@@ -42,7 +42,7 @@ const options = {
         }
       }
     }, 
-    '_api/method3': {
+    '_api/method4': {
       GET: {
         body: 'response',
         headers: {

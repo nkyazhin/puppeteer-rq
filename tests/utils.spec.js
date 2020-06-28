@@ -1,6 +1,6 @@
 const {
   matches,
-  searchUrlKey,
+  searchUrlKeys,
   isPresentQueryParams
 } = require('../lib/utils');
 
@@ -18,17 +18,17 @@ describe('mathches', () => {
   });
 });
 
-describe('searchUrlKey', () => {
-  it('success find url', () => {
-    const urlArray = ['_api/test1', '_api/test2', '_api/test3'];
-    const url = 'http://localhost:3004/_api/test2/';
-    expect(searchUrlKey(urlArray, url)).toEqual(urlArray[1]);
+describe('searchUrlKeys', () => {
+  it('success find urls', () => {
+    const urlArray = ['_api/test1', '_api/test2', '_api/test3', '_api/test2_v2'];
+    const url = 'http://localhost:3004/_api/test2_v2';
+    expect(searchUrlKeys(urlArray, url)).toEqual(['_api/test2', '_api/test2_v2']);
   });
 
   it('unsuccessful find url', () => {
     const urlArray = ['_api/test', '_api/test2', '_api/test3'];
     const url = 'http://localhost:3004/_api/noTest/';
-    expect(searchUrlKey(urlArray, url)).toBeFalsy();
+    expect(searchUrlKeys(urlArray, url)).toEqual([]);
   });
 });
 
