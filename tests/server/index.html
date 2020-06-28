@@ -47,7 +47,7 @@
     const responseHeaders = document.querySelector('.response-headers');
     document.querySelector('#button').addEventListener('click', (e) => {
         const query = e.target.value;
-        fetch('/api')
+        fetch('/api?test=123&test2=false')
             .then(res => {
               res.json()
                 .then(j => {

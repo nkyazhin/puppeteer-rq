@@ -82,6 +82,30 @@ describe('mocker', () => {
     expect(responseText).toEqual(responseBody);
   });
 
+  it('call with query params', async () => {
+    const responseBody = '{"title":"mock_response"}';
+    await page.goto('http://localhost:3000');
+    await mocker.start({
+      namespace: 'tests/__remocks__',
+      page,
+      mockList: {
+        'api': {
+          GET: {
+            filePath: 'get_api',
+            queryParams: {
+              test: '123'
+            }
+          }
+        }
+      }
+    });
+    await page.click('#button');
+    await page.waitForSelector('.response-body');
+    await mocker.stop();
+    const responseText = await getText(page, '.response-body');
+    expect(responseText).toEqual(responseBody);
+  });
+
   it('call with response headers', async () => {
     await page.goto('http://localhost:3000');
     await mocker.start({

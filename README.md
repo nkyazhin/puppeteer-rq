@@ -37,6 +37,14 @@ const options = {
     '_api/method3': {
       GET: {
         body: 'response',
+        queryParams: {
+          test: '123'
+        }
+      }
+    }, 
+    '_api/method3': {
+      GET: {
+        body: 'response',
         headers: {
           'Content-Type': 'application/json'
         }

@@ -1,6 +1,7 @@
 const {
   matches,
-  searchUrlKey
+  searchUrlKey,
+  isPresentQueryParams
 } = require('../lib/utils');
 
 describe('mathches', () => {
@@ -28,5 +29,26 @@ describe('searchUrlKey', () => {
     const urlArray = ['_api/test', '_api/test2', '_api/test3'];
     const url = 'http://localhost:3004/_api/noTest/';
     expect(searchUrlKey(urlArray, url)).toBeFalsy();
+  });
+});
+
+describe('isPresentQueryParams', () => {
+  it('all params find', () => {
+    const url = 'http://localhost:3004/_api/test2?test=true&test2=false&test3=1234';
+    const queryParams = {
+      test: true,
+      test3: 1234,
+    };
+    expect(isPresentQueryParams(url, queryParams)).toBeTruthy();
+  });
+
+  it('all params find', () => {
+    const url = 'http://localhost:3004/_api/test2?test=true&test2=false&test3=1234';
+    const queryParams = {
+      test2: false,
+      test3: 1234,
+      test5: false
+    };
+    expect(isPresentQueryParams(url, queryParams)).toBeFalsy();
   });
 });
